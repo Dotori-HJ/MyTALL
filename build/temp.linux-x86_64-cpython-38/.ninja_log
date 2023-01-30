@@ -1,0 +1,15 @@
+# ninja log v5
+0	9603	1675040814623830623	/media/ds/SSD2/TALLFormer/build/temp.linux-x86_64-cpython-38/vedacore/ops/nms/src/cuda/nms_kernel.o	d9e228e9d1f3e70
+0	12304	1675040817323769962	/media/ds/SSD2/TALLFormer/build/temp.linux-x86_64-cpython-38/vedacore/ops/nms/src/cuda/nms_cuda.o	c2f9b14d862a96b1
+0	13614	1675040818631740577	/media/ds/SSD2/TALLFormer/build/temp.linux-x86_64-cpython-38/vedacore/ops/nms/src/cpu/nms_cpu.o	1e4978139050125d
+1	14819	1675040819835713527	/media/ds/SSD2/TALLFormer/build/temp.linux-x86_64-cpython-38/vedacore/ops/nms/src/nms_ext.o	513b63100eaa18bd
+0	8910	1675040829115505045	/media/ds/SSD2/TALLFormer/build/temp.linux-x86_64-cpython-38/vedacore/ops/sigmoid_focal_loss/src/cuda/sigmoid_focal_loss_cuda.o	293444cc7b653ef
+1	13785	1675040833987395597	/media/ds/SSD2/TALLFormer/build/temp.linux-x86_64-cpython-38/vedacore/ops/sigmoid_focal_loss/src/sigmoid_focal_loss_ext.o	59ad7d0e5ddb6a67
+1	9782	1675040844055169430	/media/ds/SSD2/TALLFormer/build/temp.linux-x86_64-cpython-38/vedacore/ops/dcn/src/cuda/deform_conv_cuda_kernel.o	4968bebd60aaf45e
+0	13972	1675040848247075265	/media/ds/SSD2/TALLFormer/build/temp.linux-x86_64-cpython-38/vedacore/ops/dcn/src/cuda/deform_conv_cuda.o	8c95c227f70ac29e
+1	15533	1675040849803040314	/media/ds/SSD2/TALLFormer/build/temp.linux-x86_64-cpython-38/vedacore/ops/dcn/src/deform_conv_ext.o	3001538d60a94914
+0	8682	1675040858810837975	/media/ds/SSD2/TALLFormer/build/temp.linux-x86_64-cpython-38/AFSD/prop_pooling/boundary_max_pooling_kernel.o	33c5c91412175a70
+0	13855	1675040863978721896	/media/ds/SSD2/TALLFormer/build/temp.linux-x86_64-cpython-38/AFSD/prop_pooling/boundary_max_pooling_cuda.o	df4c9a0dc38226b5
+1	9173	1675040873438661197	/media/ds/SSD2/TALLFormer/build/temp.linux-x86_64-cpython-38/vedacore/ops/dcn/src/cuda/deform_pool_cuda_kernel.o	de0a90c838f869a1
+0	12329	1675040876594653099	/media/ds/SSD2/TALLFormer/build/temp.linux-x86_64-cpython-38/vedacore/ops/dcn/src/cuda/deform_pool_cuda.o	de52b33ae37d5b66
+1	14568	1675040878826647178	/media/ds/SSD2/TALLFormer/build/temp.linux-x86_64-cpython-38/vedacore/ops/dcn/src/deform_pool_ext.o	69b371f43d849093

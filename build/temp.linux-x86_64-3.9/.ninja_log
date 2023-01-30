@@ -1,0 +1,4 @@
+# ninja log v5
+0	9313	1675039089047457793	/media/ds/SSD2/TALLFormer/build/temp.linux-x86_64-3.9/vedacore/ops/nms/src/cuda/nms_cuda.o	993f14e6e94d590a
+0	9811	1675039089547445611	/media/ds/SSD2/TALLFormer/build/temp.linux-x86_64-3.9/vedacore/ops/nms/src/cpu/nms_cpu.o	85574fda034b2cc6
+0	10481	1675039090219429233	/media/ds/SSD2/TALLFormer/build/temp.linux-x86_64-3.9/vedacore/ops/nms/src/nms_ext.o	227f3137bf9192a6
