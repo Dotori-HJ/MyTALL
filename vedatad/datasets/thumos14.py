@@ -51,6 +51,8 @@ class Thumos14Dataset(CustomDataset):
 
         data_infos = []
         data = fileio.load(ann_file)
+        print(data)
+        exit()
         for video_name, video_info in data["database"].items():
             data_info = dict()
             data_info["video_name"] = video_name
@@ -59,8 +61,6 @@ class Thumos14Dataset(CustomDataset):
             num_imgs = len(imgfiles)
             data_info["frames"] = num_imgs
             data_info["fps"] = int(round(num_imgs / video_info["duration"]))
-            print(imgfiles)
-            exit()
             img = imread(imgfiles[0])
             data_info["height"], data_info["width"] = img.shape[:2]
 
