@@ -4,16 +4,16 @@ data_root = "data/thumos14/"
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True
 )
-num_frames = 480
+num_frames = 600
 chunk_size = 32
 img_shape = (224, 224)
 overlap_ratio = 0.25
 
 # keep_ratio can control the amount of GPU memory usage.
-keep_ratio = 0.15
+keep_ratio = 0.3
 
 feat_downsample = 2
-expid = "1.0.0-vswin_b_256x256-24GB"
+expid = "1.0.0-vswin_b_256x256-48GB"
 
 data = dict(
     samples_per_gpu=4,
