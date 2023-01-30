@@ -75,12 +75,21 @@ python ./tools/data/thumos14/txt2json.py --anno_root data/thumos14/annotations -
 ```
 
 b. Extract frames
-Our model use FPS=15 and spatial resolution `256x256`.
 
-``` sh
+FPS=15 and spatial resolution `128x128`.
+```bash
+./tools/data/extract_frames.sh data/thumos14/videos/val data/thumos14/frames_15fps_128x128/val -vf fps=15 -s 128x128 %05d.png
+./tools/data/extract_frames.sh data/thumos14/videos/test data/thumos14/frames_15fps_128x128/test -vf fps=15 -s 128x128 %05d.png
+```
+
+FPS=15 and spatial resolution `256x256`.
+
+```bash
 ./tools/data/extract_frames.sh data/thumos14/videos/val data/thumos14/frames_15fps_256x256/val -vf fps=15 -s 256x256 %05d.png
 ./tools/data/extract_frames.sh data/thumos14/videos/test data/thumos14/frames_15fps_256x256/test -vf fps=15 -s 256x256 %05d.png
 ```
+
+
 
 ### Train
 

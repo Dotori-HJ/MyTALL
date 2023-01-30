@@ -140,3 +140,4 @@ nohup.out
 *.pth
 .idea/
 data/
+!tools/data
