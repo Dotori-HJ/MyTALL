@@ -10,7 +10,7 @@ img_shape = (224, 224)
 overlap_ratio = 0.25
 
 # keep_ratio can control the amount of GPU memory usage.
-keep_ratio = 0.05
+keep_ratio = 0.15
 
 feat_downsample = 2
 expid = "1.0.0-vswin_b_256x256-11GB"
@@ -96,7 +96,7 @@ model = dict(
         num_heads=[4, 8, 16, 32],
         window_size=(8, 7, 7),
         patch_norm=True,
-        frozen_stages=2,
+        frozen_stages=4,
         use_checkpoint=True,
     ),
     neck=[
