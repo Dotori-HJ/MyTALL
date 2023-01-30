@@ -16,7 +16,7 @@ feat_downsample = 2
 expid = "1.0.0-vswin_b_256x256-48GB"
 
 data = dict(
-    samples_per_gpu=4,
+    samples_per_gpu=1,
     workers_per_gpu=6,
     train=dict(
         typename=dataset_type,
@@ -169,14 +169,6 @@ segment_coder = dict(
 
 train_engine = dict(
     typename="TrainEngine",
-    # membank=dict(
-    #     chunk_size=chunk_size,
-    #     keep_ratio=keep_ratio,
-    #     feat_downsample=feat_downsample,
-    #     mode="random",
-    #     mem_bank_meta_file=f"data/tmp/eccv2022/thumos14/memory_mechanism/{expid}/feat_swinb_15fps_256x256_crop224x224/meta_val.json",
-    #     mem_bank_dir=f"data/tmp/eccv2022/thumos14/memory_mechanism/{expid}/feat_swinb_15fps_256x256_crop224x224/val",
-    # ),
     model=model,
     criterion=dict(
         typename="SegmentAnchorCriterion",
