@@ -82,8 +82,7 @@ octave_base_scale = 2
 num_anchors = scales_per_octave
 
 model = dict(
-    typename="MemSingleStageDetector",
-    chunk_size=chunk_size,
+    typename="SingleStageDetector",
     backbone=dict(
         typename="ChunkVideoSwin",
         chunk_size=chunk_size,
