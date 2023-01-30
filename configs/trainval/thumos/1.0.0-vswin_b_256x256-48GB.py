@@ -10,7 +10,7 @@ img_shape = (224, 224)
 overlap_ratio = 0.25
 
 # keep_ratio can control the amount of GPU memory usage.
-keep_ratio = 0.3
+keep_ratio = 1.0
 
 feat_downsample = 2
 expid = "1.0.0-vswin_b_256x256-48GB"
