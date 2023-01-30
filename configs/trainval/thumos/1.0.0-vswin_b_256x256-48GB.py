@@ -96,8 +96,8 @@ model = dict(
         num_heads=[4, 8, 16, 32],
         window_size=(8, 7, 7),
         patch_norm=True,
-        frozen_stages=2,
-        use_checkpoint=True,
+        frozen_stages=4,
+        use_checkpoint=False,
     ),
     neck=[
         dict(
