@@ -169,15 +169,15 @@ segment_coder = dict(
 )
 
 train_engine = dict(
-    typename="MemBankTrainEngine",
-    membank=dict(
-        chunk_size=chunk_size,
-        keep_ratio=keep_ratio,
-        feat_downsample=feat_downsample,
-        mode="random",
-        mem_bank_meta_file=f"data/tmp/eccv2022/thumos14/memory_mechanism/{expid}/feat_swinb_15fps_256x256_crop224x224/meta_val.json",
-        mem_bank_dir=f"data/tmp/eccv2022/thumos14/memory_mechanism/{expid}/feat_swinb_15fps_256x256_crop224x224/val",
-    ),
+    typename="TrainEngine",
+    # membank=dict(
+    #     chunk_size=chunk_size,
+    #     keep_ratio=keep_ratio,
+    #     feat_downsample=feat_downsample,
+    #     mode="random",
+    #     mem_bank_meta_file=f"data/tmp/eccv2022/thumos14/memory_mechanism/{expid}/feat_swinb_15fps_256x256_crop224x224/meta_val.json",
+    #     mem_bank_dir=f"data/tmp/eccv2022/thumos14/memory_mechanism/{expid}/feat_swinb_15fps_256x256_crop224x224/val",
+    # ),
     model=model,
     criterion=dict(
         typename="SegmentAnchorCriterion",
