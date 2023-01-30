@@ -51,7 +51,7 @@ class Thumos14Dataset(CustomDataset):
 
         data_infos = []
         data = fileio.load(ann_file)
-        print(ann_file)
+        print(data)
         exit()
         for video_name, video_info in data["database"].items():
             data_info = dict()
