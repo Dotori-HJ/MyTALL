@@ -13,10 +13,10 @@ overlap_ratio = 0.25
 keep_ratio = 0.15
 
 feat_downsample = 2
-expid = "1.0.0-vswin_b_256x256-11GB"
+expid = "1.0.0-vswin_t_256x256"
 
 data = dict(
-    samples_per_gpu=2,
+    samples_per_gpu=4,
     workers_per_gpu=6,
     train=dict(
         typename=dataset_type,
@@ -81,23 +81,24 @@ scales_per_octave = 5
 octave_base_scale = 2
 num_anchors = scales_per_octave
 
+
+
 model = dict(
     typename="MemSingleStageDetector",
     chunk_size=chunk_size,
     backbone=dict(
         typename="ChunkVideoSwin",
-        chunk_size=chunk_size,
-        do_pooling=True,
+        chunk_size=32,
         patch_size=(2, 4, 4),
         in_chans=3,
-        embed_dim=128,
-        drop_path_rate=0.2,
-        depths=[2, 2, 18, 2],
-        num_heads=[4, 8, 16, 32],
+        embed_dim=96,
+        drop_path_rate=0.1,
+        depths=[2, 2, 6, 2],
+        num_heads=[3, 6, 12, 24],
         window_size=(8, 7, 7),
         patch_norm=True,
-        frozen_stages=4,
-        use_checkpoint=True,
+        frozen_stages=0,
+        use_checkpoint=False,
     ),
     neck=[
         dict(
@@ -259,7 +260,7 @@ max_epochs = 1000
 
 # 6. checkpoint
 weights = dict(
-    filepath="data/pretrained_models/vswin/swin_base_patch244_window877_kinetics400_22k_keysfrom_backbone.pth"
+    filepath="data/pretrained_models/vswin/swin_tiny_patch244_window877_kinetics400_1k_keysfrom_backbone.pth"
 )
 
 # optimizer = dict(filepath='epoch_900_optim.pth')
