@@ -16,7 +16,7 @@ feat_downsample = 2
 expid = "1.0.0-vswin_b_256x256-11GB"
 
 data = dict(
-    samples_per_gpu=4,
+    samples_per_gpu=2,
     workers_per_gpu=6,
     train=dict(
         typename=dataset_type,
