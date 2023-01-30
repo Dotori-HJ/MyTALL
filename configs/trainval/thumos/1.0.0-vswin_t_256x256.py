@@ -89,6 +89,7 @@ model = dict(
     backbone=dict(
         typename="ChunkVideoSwin",
         chunk_size=32,
+        do_pooling=True,
         patch_size=(2, 4, 4),
         in_chans=3,
         embed_dim=96,
