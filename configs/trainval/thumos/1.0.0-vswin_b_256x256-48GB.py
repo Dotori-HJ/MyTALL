@@ -5,7 +5,7 @@ img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True
 )
 num_frames = 600
-chunk_size = 32
+chunk_size = 40
 img_shape = (224, 224)
 overlap_ratio = 0.25
 
