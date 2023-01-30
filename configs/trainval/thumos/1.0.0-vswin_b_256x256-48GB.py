@@ -113,7 +113,7 @@ model = dict(
         #         typename='AdaptiveAvgPool3d', output_size=(None, 1, 1))),
         dict(
             typename='TDM',
-            in_channels=2048,
+            in_channels=512,
             stage_layers=(1, 1, 1, 1),
             out_channels=512,
             conv_cfg=dict(typename='Conv1d'),
@@ -122,7 +122,7 @@ model = dict(
             out_indices=(0, 1, 2, 3, 4)),
         dict(
             typename='FPN',
-            in_channels=[2048, 512, 512, 512, 512],
+            in_channels=[512, 512, 512, 512, 512],
             out_channels=256,
             num_outs=5,
             start_level=0,
