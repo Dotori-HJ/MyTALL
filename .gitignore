@@ -140,4 +140,3 @@ nohup.out
 *.pth
 .idea/
 data/
-!data/annots/*
