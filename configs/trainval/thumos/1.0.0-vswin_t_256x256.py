@@ -176,8 +176,8 @@ train_engine = dict(
         keep_ratio=keep_ratio,
         feat_downsample=feat_downsample,
         mode="random",
-        mem_bank_meta_file=f"data/tmp/eccv2022/thumos14/memory_mechanism/{expid}/feat_swinb_15fps_256x256_crop224x224/meta_val.json",
-        mem_bank_dir=f"data/tmp/eccv2022/thumos14/memory_mechanism/{expid}/feat_swinb_15fps_256x256_crop224x224/val",
+        mem_bank_meta_file=f"data/tmp/eccv2022/thumos14/memory_mechanism/{expid}/feat_swint_15fps_256x256_crop224x224/meta_val.json",
+        mem_bank_dir=f"data/tmp/eccv2022/thumos14/memory_mechanism/{expid}/feat_swint_15fps_256x256_crop224x224/val",
     ),
     model=model,
     criterion=dict(
