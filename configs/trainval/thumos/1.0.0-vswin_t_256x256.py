@@ -105,7 +105,7 @@ model = dict(
         dict(
             typename="SRMSwin",
             srm_cfg=dict(
-                in_channels=1024,
+                in_channels=768,
                 out_channels=512,
                 with_transformer=False,
             ),
