@@ -8,3 +8,4 @@ yapf
 einops
 easydict
 scikit-learn
+timm
