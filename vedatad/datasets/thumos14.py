@@ -51,12 +51,12 @@ class Thumos14Dataset(CustomDataset):
 
         data_infos = []
         data = fileio.load(ann_file)
-        print(data['database'].keys())
-        exit()
         for video_name, video_info in data["database"].items():
             data_info = dict()
             data_info["video_name"] = video_name
             data_info["duration"] = float(video_info["duration"])
+            print(video_name, self.video_prefix)
+            exit()
             imgfiles = glob.glob(osp.join(self.video_prefix, video_name, "*"))
             num_imgs = len(imgfiles)
             data_info["frames"] = num_imgs
