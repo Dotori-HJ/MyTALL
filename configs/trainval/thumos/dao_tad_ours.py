@@ -92,12 +92,12 @@ model = dict(
         #     typename='SRM',
         #     srm_cfg=dict(
         #         typename='TemporalWiseAttentivePooling', input_dim=2048, base_dim=512)),
-        # )
+        # ),
         dict(
             typename='TemporalWiseAttentivePooling',
             input_dim=2048,
             base_dim=512,
-        )
+        ),
         dict(
             typename='TDM',
             in_channels=2048,
