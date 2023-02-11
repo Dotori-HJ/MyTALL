@@ -9,7 +9,7 @@ overlap_ratio = 0.25
 
 data = dict(
     samples_per_gpu=4,
-    workers_per_gpu=12,
+    workers_per_gpu=8,
     train=dict(
         typename=dataset_type,
         ann_file=data_root + 'annotations/val.json',
