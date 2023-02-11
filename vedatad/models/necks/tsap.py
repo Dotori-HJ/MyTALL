@@ -4,7 +4,6 @@ import torch.nn.functional as F
 from einops import rearrange, repeat
 
 from vedacore.misc import registry
-from vedatad.models.builder import build
 
 
 class Mlp(nn.Module):
