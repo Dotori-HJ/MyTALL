@@ -27,7 +27,6 @@ data = dict(
                     num_frames=num_frames,
                     iof_th=0.75),
                 dict(typename='LoadFrames', to_float32=True),
-                # dict(typename=''),
                 dict(typename='SpatialRandomCrop', crop_size=img_shape),
                 dict(
                     typename='PhotoMetricDistortion',
@@ -47,12 +46,11 @@ data = dict(
                 dict(typename='DefaultFormatBundle'),
                 dict(
                     typename='Collect',
-                    keys=[
-                        'imgs', 'gt_segments', 'gt_labels', 'gt_segments_ignore'
-                    ]
-                ]
-            ))
-        ),
+                    keys=['imgs', 'gt_segments', 'gt_labels', 'gt_segments_ignore']
+                )
+            ]
+        )
+    ),
     val=dict(
         typename=dataset_type,
         ann_file=data_root + 'annotations/test.json',
