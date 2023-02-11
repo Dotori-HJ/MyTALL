@@ -88,14 +88,15 @@ model = dict(
         inflate=((1, 1, 1), (1, 0, 1, 0), (1, 0, 1, 0, 1, 0), (0, 1, 0)),
         zero_init_residual=False),
     neck=[
+        # dict(
+        #     typename='SRM',
+        #     srm_cfg=dict(
+        #         typename='TemporalWiseAttentivePooling', input_dim=2048, base_dim=512)),
+        # )
         dict(
-            typename='SRM',
-            srm_cfg=dict(
-                typename='TemporalWiseAttentivePooling', input_dim=2048, base_dim=512)),
-        dict(
-            typename='TemporalWiseAttentivePooling'
+            typename='TemporalWiseAttentivePooling',
             input_dim=2048,
-            base_dim=512
+            base_dim=512,
         )
         dict(
             typename='TDM',
