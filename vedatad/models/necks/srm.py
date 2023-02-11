@@ -11,8 +11,7 @@ class SRM(nn.Module):
 
     def __init__(self, srm_cfg):
         super(SRM, self).__init__()
-        # self.srm = build_from_module(srm_cfg, nn)
-        self.srm = build_neck(srm_cfg)
+        self.srm = build_from_module(srm_cfg, nn)
 
     def init_weights(self):
         pass

@@ -93,6 +93,11 @@ model = dict(
             srm_cfg=dict(
                 typename='TemporalWiseAttentivePooling', input_dim=2048, base_dim=512)),
         dict(
+            typename='TemporalWiseAttentivePooling'
+            input_dim=2048,
+            base_dim=512
+        )
+        dict(
             typename='TDM',
             in_channels=2048,
             stage_layers=(1, 1, 1, 1),
