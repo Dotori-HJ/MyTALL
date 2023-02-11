@@ -199,7 +199,7 @@ hooks = [
     dict(typename='OptimizerHook'),
     dict(
         typename='CosineRestartLrSchedulerHook',
-        periods=[100] * 12,
+        periods=[1] * 12,
         restart_weights=[1] * 12,
         warmup='linear',
         warmup_iters=500,

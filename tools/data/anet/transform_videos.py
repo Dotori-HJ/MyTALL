@@ -9,7 +9,7 @@ parser.add_argument("thread_num", type=int)
 # parser.add_argument("--video_dir", type=str, default="datasets/activitynet/v1-3/train_val")
 parser.add_argument("--video_dir", type=str, default="/home/ds/SSD2/Videos/ActivityNet/archives/v1-2/val")
 # parser.add_argument("--output_dir", type=str, default="datasets/activitynet/videos_112x112")
-parser.add_argument("--output_dir", type=str, default="/home/ds/SSD2/ActivityNet_v1.3_768frames")
+parser.add_argument("--output_dir", type=str, default="/home/ds/SSD2/ActivityNet_v1.3_768frames_")
 parser.add_argument("--resolution", type=str, default="256x256")
 parser.add_argument("--max_frame", type=int, default=768)
 args = parser.parse_args()
@@ -38,16 +38,16 @@ def sub_processor(pid, files):
         frame_num = cap.get(cv2.CAP_PROP_FRAME_COUNT)
         ratio = min(max_frame * 1.0 / frame_num, 1.0)
         target_fps = max_fps * ratio
-        # cmd = (
-        #     "ffmpeg -v quiet -i {} -max_muxing_queue_size 9999 -qscale 0 -r {} -s {} -y {}".format(
-        #         os.path.join(video_dir, file), target_fps, resolution, target_file
-        #     )
-        # )
         cmd = (
-            "ffmpeg -v quiet -i {} -max_muxing_queue_size 9999 -qscale 0 -r {} -y {}".format(
-                os.path.join(video_dir, file), target_fps, target_file
+            "ffmpeg -v quiet -i {} -max_muxing_queue_size 9999 -qscale 0 -r {} -s {} -y {}".format(
+                os.path.join(video_dir, file), target_fps, resolution, target_file
             )
         )
+        # cmd = (
+        #     "ffmpeg -v quiet -i {} -max_muxing_queue_size 9999 -qscale 0 -r {} -y {}".format(
+        #         os.path.join(video_dir, file), target_fps, target_file
+        #     )
+        # )
         print(cmd)
         os.system(cmd)
 
