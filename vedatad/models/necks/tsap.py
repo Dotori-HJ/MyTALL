@@ -290,6 +290,14 @@ class TemporalWiseAttentionPooling(nn.Module):
         else:
             self.output_proj = nn.Identity()
 
+    def init_weights(self):
+        pass
+        # """Initiate the parameters."""
+        # for m in self.modules():
+        #     if isinstance(m, _ConvNd):
+        #         kaiming_init(m)
+        #     elif isinstance(m, _BatchNorm):
+        #         constant_init(m, 1)
 
     def forward(self, x):
         b, c, t, h, w = x.size()
