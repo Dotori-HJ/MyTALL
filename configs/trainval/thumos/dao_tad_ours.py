@@ -100,7 +100,7 @@ model = dict(
         ),
         dict(
             typename='TDM',
-            in_channels=2048,
+            in_channels=512,
             stage_layers=(1, 1, 1, 1),
             out_channels=512,
             conv_cfg=dict(typename='Conv1d'),
