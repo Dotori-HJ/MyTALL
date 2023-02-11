@@ -7,7 +7,7 @@ import cv2
 parser = argparse.ArgumentParser()
 parser.add_argument("thread_num", type=int)
 # parser.add_argument("--video_dir", type=str, default="datasets/activitynet/v1-3/train_val")
-parser.add_argument("--video_dir", type=str, default="/home/ds/SSD2/Videos/ActivityNet/archives/v1-2/val")
+parser.add_argument("--video_dir", type=str, default="/home/ds/SSD2/Videos/ActivityNet/archives/v1-3/train_val")
 # parser.add_argument("--output_dir", type=str, default="datasets/activitynet/videos_112x112")
 parser.add_argument("--output_dir", type=str, default="/home/ds/SSD2/ActivityNet_v1.3_768frames_")
 parser.add_argument("--resolution", type=str, default="256x256")
