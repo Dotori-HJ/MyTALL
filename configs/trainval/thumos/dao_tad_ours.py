@@ -94,7 +94,7 @@ model = dict(
         #         typename='TemporalWiseAttentivePooling', input_dim=2048, base_dim=512)),
         # ),
         dict(
-            typename='TemporalWiseAttentivePooling',
+            typename='TemporalWiseAttentionPooling',
             input_dim=2048,
             base_dim=512,
         ),
