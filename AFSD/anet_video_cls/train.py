@@ -11,15 +11,15 @@ import torch.nn.functional as F
 import tqdm
 from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.optim import lr_scheduler
-from torch.utils.data import DataLoader
-from vedatad.misc import get_root_logger
+from torch.utils.data import ConcatDataset, DataLoader
 
 import AFSD.common.distributed as du
 from AFSD.anet_video_cls.anet_dataset import ANET_Dataset, detection_collate
 from AFSD.anet_video_cls.BDNet import BDNet
 from AFSD.anet_video_cls.multisegment_loss import (ActionClassLoss,
-                                                   MultiSegmentLoss)
+                                                   MultiSegmentLoss,)
 from AFSD.common.config import config
+from vedatad.misc import get_root_logger
 
 batch_size = config["training"]["batch_size"]
 learning_rate = config["training"]["learning_rate"]
@@ -510,6 +510,7 @@ def main(local_rank):
         norm_cfg=config["other_config"].norm_cfg,
         more_augmentation=more_augmentation,
     )
+    train_dataset = ConcatDataset([train_dataset for i in range(100)])
     sampler = torch.utils.data.distributed.DistributedSampler(
         train_dataset, shuffle=True, drop_last=True
     )
