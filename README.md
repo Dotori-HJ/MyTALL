@@ -85,8 +85,8 @@ FPS=15 and spatial resolution `128x128`.
 FPS=15 and spatial resolution `256x256`.
 
 ```bash
-./tools/data/extract_frames.sh data/thumos14/videos/val data/thumos14/frames_15fps_256x256/val -vf fps=15 -s 256x256 %05d.png
-./tools/data/extract_frames.sh data/thumos14/videos/test data/thumos14/frames_15fps_256x256/test -vf fps=15 -s 256x256 %05d.png
+./tools/data/extract_frames.sh data/thumos14/videos/val data/thumos14/frames_15fps_256x256_jpg/val -vf fps=15 -s 256x256 %05d.jpg
+./tools/data/extract_frames.sh data/thumos14/videos/test data/thumos14/frames_15fps_256x256_jpg/test -vf fps=15 -s 256x256 %05d.jpg
 ```
 
 

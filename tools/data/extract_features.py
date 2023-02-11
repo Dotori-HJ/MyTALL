@@ -134,7 +134,7 @@ def load_video(video_path):
     Returns: list of image. Each image is of shape (H,W,3).
 
     """
-    frame_paths = sorted(glob(os.path.join(video_path, "*.png")))
+    frame_paths = sorted(glob(os.path.join(video_path, "*.jpg")))
     imgs = []
     for img_path in frame_paths:
         img = Image.open(img_path).convert("RGB")
