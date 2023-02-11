@@ -4,6 +4,7 @@ from .multi_scale import MultiScaleWrapper, ReshapeFeatures
 from .srm import SRM, SRMResizeFeature
 from .srm_vswin import SRMSwin, SRMSwinNorm
 from .tdm import TDM, MultiScaleTDM, SelfAttnTDM
+from .tsap import TemporalWiseAttentionPooling
 
 __all__ = [
     "FPN",
@@ -20,4 +21,5 @@ __all__ = [
     "AttnFPNNorm",
     "ReshapeFeatures",
     "MultiScaleWrapper",
+    "TemporalWiseAttentionPooling"
 ]
