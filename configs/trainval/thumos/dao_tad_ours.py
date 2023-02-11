@@ -206,8 +206,8 @@ hooks = [
         warmup_ratio=1e-1,
         min_lr_ratio=1e-2),
     dict(typename='EvalHook', eval_cfg=dict(mode='anet')),
-    dict(typename='SnapshotHook', interval=100),
-    dict(typename='LoggerHook', interval=10)
+    dict(typename='SnapshotHook', interval=1),
+    dict(typename='LoggerHook', interval=50)
 ]
 
 # 5. work modes
