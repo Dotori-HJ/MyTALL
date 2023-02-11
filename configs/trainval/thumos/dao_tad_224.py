@@ -9,7 +9,7 @@ overlap_ratio = 0.25
 
 data = dict(
     samples_per_gpu=4,
-    workers_per_gpu=16,
+    workers_per_gpu=24,
     train=dict(
         # typename=dataset_type,
         typename='RepeatDataset',
