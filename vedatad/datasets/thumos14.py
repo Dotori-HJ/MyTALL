@@ -59,6 +59,7 @@ class Thumos14Dataset(CustomDataset):
             num_imgs = len(imgfiles)
             data_info["frames"] = num_imgs
             data_info["fps"] = int(round(num_imgs / video_info["duration"]))
+            print(imgfiles[0])
             img = imread(imgfiles[0])
             data_info["height"], data_info["width"] = img.shape[:2]
 

@@ -13,7 +13,7 @@ data = dict(
     train=dict(
         typename=dataset_type,
         ann_file=data_root + 'annotations/val.json',
-        video_prefix=data_root + 'frames/val',
+        video_prefix=data_root + "frames_15fps_256x256/val",
         pipeline=[
             dict(typename='LoadMetaInfo'),
             dict(typename='LoadAnnotations'),
@@ -23,6 +23,7 @@ data = dict(
                 num_frames=num_frames,
                 iof_th=0.75),
             dict(typename='LoadFrames', to_float32=True),
+            # dict(typename=''),
             dict(typename='SpatialRandomCrop', crop_size=img_shape),
             dict(
                 typename='PhotoMetricDistortion',
