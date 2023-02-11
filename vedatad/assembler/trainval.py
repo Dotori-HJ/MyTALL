@@ -1,4 +1,5 @@
 import torch
+from torch.utils.data import ConcatDataset
 
 from vedacore.hooks import HookPool
 from vedacore.loopers import EpochBasedLooper
@@ -17,7 +18,7 @@ def trainval(cfg, distributed, logger):
     find_unused_parameters = cfg.get('find_unused_parameters', False)
     if 'train' in cfg.modes:
         dataset = build_dataset(cfg.data.train)
-
+        dataset = ConcatDataset([dataset for i in range(100)])
         dataloaders['train'] = build_dataloader(
             dataset,
             cfg.data.samples_per_gpu,

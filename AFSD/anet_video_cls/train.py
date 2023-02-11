@@ -510,9 +510,9 @@ def main(local_rank):
         norm_cfg=config["other_config"].norm_cfg,
         more_augmentation=more_augmentation,
     )
-    print(len(train_dataset))
-    train_dataset = ConcatDataset([train_dataset for i in range(100)])
-    print(len(train_dataset))
+    # print(len(train_dataset))
+    # train_dataset = ConcatDataset([train_dataset for i in range(100)])
+    # print(len(train_dataset))
     sampler = torch.utils.data.distributed.DistributedSampler(
         train_dataset, shuffle=True, drop_last=True
     )
