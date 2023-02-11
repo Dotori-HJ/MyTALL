@@ -11,42 +11,45 @@ data = dict(
     samples_per_gpu=4,
     workers_per_gpu=24,
     train=dict(
-        typename=dataset_type,
-        ann_file=data_root + 'annotations/val.json',
-        video_prefix=data_root + "frames_15fps_256x256_jpg/val",
-        pipeline=[
-            dict(typename='LoadMetaInfo'),
-            dict(typename='LoadAnnotations'),
-            dict(typename='Time2Frame'),
-            dict(
-                typename='TemporalRandomCrop',
-                num_frames=num_frames,
-                iof_th=0.75),
-            dict(typename='LoadFrames', to_float32=True),
-            # dict(typename=''),
-            dict(typename='SpatialRandomCrop', crop_size=img_shape),
-            dict(
-                typename='PhotoMetricDistortion',
-                brightness_delta=32,
-                contrast_range=(0.5, 1.5),
-                saturation_range=(0.5, 1.5),
-                hue_delta=18,
-                p=0.5),
-            dict(
-                typename='Rotate',
-                limit=(-45, 45),
-                border_mode='reflect101',
-                p=0.5),
-            dict(typename='SpatialRandomFlip', flip_ratio=0.5),
-            dict(typename='Normalize', **img_norm_cfg),
-            dict(typename='Pad', size=(num_frames, *img_shape)),
-            dict(typename='DefaultFormatBundle'),
-            dict(
-                typename='Collect',
-                keys=[
-                    'imgs', 'gt_segments', 'gt_labels', 'gt_segments_ignore'
-                ])
-        ]),
+        # typename=dataset_type,
+        typename='RepeatDataset',
+        times=100,
+        dataset=dict(
+            typename=dataset_type,
+            ann_file=data_root + 'annotations/val.json',
+            video_prefix=data_root + "frames_15fps_256x256_jpg/val",
+            pipeline=[
+                dict(typename='LoadMetaInfo'),
+                dict(typename='LoadAnnotations'),
+                dict(typename='Time2Frame'),
+                dict(
+                    typename='TemporalRandomCrop',
+                    num_frames=num_frames,
+                    iof_th=0.75),
+                dict(typename='LoadFrames', to_float32=True),
+                dict(typename='SpatialRandomCrop', crop_size=img_shape),
+                dict(
+                    typename='PhotoMetricDistortion',
+                    brightness_delta=32,
+                    contrast_range=(0.5, 1.5),
+                    saturation_range=(0.5, 1.5),
+                    hue_delta=18,
+                    p=0.5),
+                dict(
+                    typename='Rotate',
+                    limit=(-45, 45),
+                    border_mode='reflect101',
+                    p=0.5),
+                dict(typename='SpatialRandomFlip', flip_ratio=0.5),
+                dict(typename='Normalize', **img_norm_cfg),
+                dict(typename='Pad', size=(num_frames, *img_shape)),
+                dict(typename='DefaultFormatBundle'),
+                dict(
+                    typename='Collect',
+                    keys=['imgs', 'gt_segments', 'gt_labels', 'gt_segments_ignore']
+                )
+            ])
+        ),
     val=dict(
         typename=dataset_type,
         ann_file=data_root + 'annotations/test.json',
