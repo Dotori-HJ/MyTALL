@@ -48,9 +48,8 @@ data = dict(
                     typename='Collect',
                     keys=['imgs', 'gt_segments', 'gt_labels', 'gt_segments_ignore']
                 )
-            ]
-        )
-    ),
+            ])
+        ),
     val=dict(
         typename=dataset_type,
         ann_file=data_root + 'annotations/test.json',
