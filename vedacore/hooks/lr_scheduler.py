@@ -244,7 +244,7 @@ class CosineAnnealingLrSchedulerHook(LrSchedulerHook):
             progress = looper.epoch
             max_progress = looper.max_epochs
         else:
-            progress = looper.iter
+            progress = looper.iter -1
             max_progress = looper.max_iters
 
         if self.min_lr_ratio is not None:
