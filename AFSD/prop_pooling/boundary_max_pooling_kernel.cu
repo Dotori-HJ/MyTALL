@@ -4,6 +4,7 @@
 #include <ATen/cuda/CUDAContext.h>
 #include <ATen/cuda/DeviceUtils.cuh>
 #include <ATen/cuda/ThrustAllocator.h>
+#include <ATen/cuda/Atomic.cuh>
 
 #define CUDA_1D_KERNEL_LOOP(i, n)                            \
   for (int i = blockIdx.x * blockDim.x + threadIdx.x; i < n; \
@@ -80,14 +81,14 @@ __global__ void BoundaryPoolingBackward(
                 argmax = i;
             }
         }
-        // scalar_t grad = grad_output[index];
-        float grad = static_cast<float>(grad_output[index]);
-        float* address = reinterpret_cast<float*>(grad_input + n * channels * tscale + c * tscale + argmax);
-        float old_value = static_cast<float>(*address);
-        float new_value = old_value + grad;
-        // atomicAdd(grad_input + n * channels * tscale + c * tscale + argmax, grad);
-        atomicAdd(address, grad);
-        *address = static_cast<scalar_t>(new_value);
+        scalar_t grad = grad_output[index];
+        // float grad = static_cast<float>(grad_output[index]);
+        // float* address = reinterpret_cast<float*>(grad_input + n * channels * tscale + c * tscale + argmax);
+        // float old_value = static_cast<float>(*address);
+        // float new_value = old_value + grad;
+        atomicAdd(grad_input + n * channels * tscale + c * tscale + argmax, grad);
+        // atomicAdd(address, grad);
+        // *address = static_cast<scalar_t>(new_value);
     }
 }
 
