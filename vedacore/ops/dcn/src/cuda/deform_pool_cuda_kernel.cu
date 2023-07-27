@@ -9,7 +9,12 @@
 // modify from https://github.com/chengdazhi/Deformable-Convolution-V2-PyTorch/blob/mmdetection/mmdet/ops/dcn/src/cuda/deform_psroi_pooling_cuda.cu
 
 #include <ATen/ATen.h>
-#include <THC/THCAtomics.cuh>
+// #include <THC/THCAtomics.cuh>
+#include <ATen/cuda/CUDAEvent.h>
+#include <ATen/cuda/CUDAContext.h>
+#include <ATen/cuda/DeviceUtils.cuh>
+#include <ATen/cuda/ThrustAllocator.h>
+#include <ATen/cuda/Atomic.cuh>
 #include <stdio.h>
 #include <math.h>
 #include <algorithm>

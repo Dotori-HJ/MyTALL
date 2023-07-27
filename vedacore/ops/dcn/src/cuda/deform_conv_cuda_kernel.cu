@@ -65,6 +65,7 @@
 #include <ATen/cuda/CUDAEvent.h>
 #include <ATen/cuda/DeviceUtils.cuh>
 #include <ATen/cuda/ThrustAllocator.h>
+#include <ATen/cuda/Atomic.cuh>
 // #include <THC/THCAtomics.cuh>
 #include <stdio.h>
 #include <math.h>
