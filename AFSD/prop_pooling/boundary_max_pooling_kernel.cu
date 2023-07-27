@@ -80,7 +80,8 @@ __global__ void BoundaryPoolingBackward(
                 argmax = i;
             }
         }
-        scalar_t grad = grad_output[index];
+        // scalar_t grad = grad_output[index];
+        float grad = static_cast<float>(grad_output[index]);
         atomicAdd(grad_input + n * channels * tscale + c * tscale + argmax, grad);
     }
 }
