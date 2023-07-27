@@ -156,7 +156,8 @@ at::Tensor SigmoidFocalLoss_backward_cuda(const at::Tensor &logits,
   auto d_logits = at::zeros({num_samples, num_classes}, logits.options());
   auto d_logits_size = num_samples * logits.size(1);
 
-  dim3 grid(std::min(THCCeilDiv((int64_t)d_logits_size, (int64_t)512),
+  // dim3 grid(std::min(THCCeilDiv((int64_t)d_logits_size, (int64_t)512),
+  dim3 grid(std::min(at::ceil_div((int64_t)d_logits_size, (int64_t)512),
                      (int64_t)4096));
   dim3 block(512);
 
