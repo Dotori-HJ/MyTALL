@@ -85,7 +85,7 @@ at::Tensor nms_cuda_forward(const at::Tensor segments, float nms_overlap_thresh)
 
   scalar_t* segments_dev = segments_sorted.data_ptr<scalar_t>();
 
-  THCState *state = at::globalContext().lazyInitCUDA(); // TODO replace with getTHCState
+  // THCState *state = at::globalContext().lazyInitCUDA(); // TODO replace with getTHCState
 
   unsigned long long* mask_dev = NULL;
   //THCudaCheck(THCudaMalloc(state, (void**) &mask_dev,
@@ -96,10 +96,10 @@ at::Tensor nms_cuda_forward(const at::Tensor segments, float nms_overlap_thresh)
 
   // mask_dev = (unsigned long long*) at::AT_CUDA_CHECK(at::cudaMalloc(state, segments_num * col_blocks * sizeof(unsigned long long)));
 
-  // dim3 blocks(at:ceil_div(segments_num, threadsPerBlock),
-              // at:ceil_div(segments_num, threadsPerBlock));
-  dim3 blocks(THCCeilDiv(segments_num, threadsPerBlock),
-              THCCeilDiv(segments_num, threadsPerBlock));
+  dim3 blocks(at:ceil_div(segments_num, threadsPerBlock),
+              at:ceil_div(segments_num, threadsPerBlock));
+  // dim3 blocks(THCCeilDiv(segments_num, threadsPerBlock),
+              // THCCeilDiv(segments_num, threadsPerBlock));
   dim3 threads(threadsPerBlock);
   nms_kernel<<<blocks, threads, 0, at::cuda::getCurrentCUDAStream()>>>(segments_num,
                                   nms_overlap_thresh,
