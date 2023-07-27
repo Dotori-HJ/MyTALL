@@ -110,9 +110,11 @@ at::Tensor nms_cuda_forward(const at::Tensor segments, float nms_overlap_thresh)
 
   std::vector<unsigned long long> mask_host(segments_num * col_blocks);
 
+  const void* mask_dev_raw_ptr = static_cast<const void*>(mask_dev.data_ptr<unsigned long long>());
+
   AT_CUDA_CHECK(cudaMemcpyAsync(
 			  &mask_host[0],
-			  mask_dev,
+			  mask_dev_raw_ptr,
 			  sizeof(unsigned long long) * segments_num * col_blocks,
 			  cudaMemcpyDeviceToHost,
 			  at::cuda::getCurrentCUDAStream()
