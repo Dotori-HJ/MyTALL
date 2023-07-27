@@ -1,5 +1,9 @@
 #include <ATen/ATen.h>
-#include <THC/THCAtomics.cuh>
+// #include <THC/THCAtomics.cuh>
+#include <ATen/cuda/CUDAEvent.h>
+#include <ATen/cuda/CUDAContext.h>
+#include <ATen/cuda/DeviceUtils.cuh>
+#include <ATen/cuda/ThrustAllocator.h>
 
 #define CUDA_1D_KERNEL_LOOP(i, n)                            \
   for (int i = blockIdx.x * blockDim.x + threadIdx.x; i < n; \
@@ -107,7 +111,8 @@ int boundary_max_pooling_cuda_forward(
             seg_num);
     }));
 
-    THCudaCheck(cudaGetLastError());
+    // THCudaCheck(cudaGetLastError());
+    AT_CUDA_CHECK(cudaGetLastError());
     return 1;
 }
 
@@ -140,6 +145,7 @@ int boundary_max_pooling_cuda_backward(
             seg_num);
     }));
 
-    THCudaCheck(cudaGetLastError());
+    // THCudaCheck(cudaGetLastError());
+    AT_CUDA_CHECK(cudaGetLastError());
     return 1;
 }
