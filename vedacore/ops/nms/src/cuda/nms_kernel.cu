@@ -92,13 +92,14 @@ at::Tensor nms_cuda_forward(const at::Tensor segments, float nms_overlap_thresh)
   //                      segments_num * col_blocks * sizeof(unsigned long long)));
 
   // mask_dev = (unsigned long long*) THCudaMalloc(state, segments_num * col_blocks * sizeof(unsigned long long));
-  mask_dev = (unsigned long long*) THCudaMalloc(state, segments_num * col_blocks * sizeof(unsigned long long));
+  at::Tensor mask_dev = at::empty({size}, at::cuda::CUDATensorOptions().dtype(at::kLong));
+
   // mask_dev = (unsigned long long*) at::AT_CUDA_CHECK(at::cudaMalloc(state, segments_num * col_blocks * sizeof(unsigned long long)));
 
-  dim3 blocks(at:ceil_div(segments_num, threadsPerBlock),
-              at:ceil_div(segments_num, threadsPerBlock));
-  // dim3 blocks(THCCeilDiv(segments_num, threadsPerBlock),
-  //             THCCeilDiv(segments_num, threadsPerBlock));
+  // dim3 blocks(at:ceil_div(segments_num, threadsPerBlock),
+              // at:ceil_div(segments_num, threadsPerBlock));
+  dim3 blocks(THCCeilDiv(segments_num, threadsPerBlock),
+              THCCeilDiv(segments_num, threadsPerBlock));
   dim3 threads(threadsPerBlock);
   nms_kernel<<<blocks, threads, 0, at::cuda::getCurrentCUDAStream()>>>(segments_num,
                                   nms_overlap_thresh,
@@ -142,7 +143,7 @@ at::Tensor nms_cuda_forward(const at::Tensor segments, float nms_overlap_thresh)
     }
   }
 
-  THCudaFree(state, mask_dev);
+  // THCudaFree(state, mask_dev);
   // at:AT_CUDA_CHECK(at::cudaFree(state, mask_dev));
   // TODO improve this part
   return order_t.index({
