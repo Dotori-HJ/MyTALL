@@ -3,10 +3,6 @@
 
 #include <torch/extension.h>
 #include <ATen/DeviceGuard.h>
-#include <ATen/cuda/CUDAEvent.h>
-#include <ATen/cuda/CUDAContext.h>
-#include <ATen/cuda/DeviceUtils.cuh>
-#include <ATen/cuda/ThrustAllocator.h>
 
 #include <cmath>
 #include <vector>
