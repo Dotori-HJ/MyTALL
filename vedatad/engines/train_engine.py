@@ -82,6 +82,7 @@ class MemBankTrainEngine(BaseEngine):
             2, 0, 1, 3, 4, 5
         )  # shape: (num_chunks, B, C , chunk_size, H,W)
         imgs = imgs[keep_indices].contiguous()
+        imgs = imgs.cuda()
 
         # get features from membank
         t1 = time()
