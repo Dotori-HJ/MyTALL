@@ -68,8 +68,7 @@ class MemBankTrainEngine(BaseEngine):
         self, imgs, video_metas, gt_segments, gt_labels, gt_segments_ignore=None
     ):
         if isinstance(imgs, DataContainer):
-            imgs = torch.stack(imgs.data)
-        print(imgs.shape)
+            imgs = imgs.data[0]
         B, C, D, H, W = imgs.shape
         chunk_size = self.membank["chunk_size"]
 
