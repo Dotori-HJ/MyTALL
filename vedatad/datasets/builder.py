@@ -118,6 +118,9 @@ def build_dataloader(dataset,
         pin_memory=False,
         worker_init_fn=init_fn,
         **kwargs)
+    data = next(iter(data_loader))
+    import ipdb; ipdb.set_trace();
+    exit()
 
     return data_loader
 
