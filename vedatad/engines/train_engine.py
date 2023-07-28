@@ -69,6 +69,7 @@ class MemBankTrainEngine(BaseEngine):
     ):
         if isinstance(imgs, DataContainer):
             imgs = torch.stack(imgs.data)
+        print(imgs.shape)
         B, C, D, H, W = imgs.shape
         chunk_size = self.membank["chunk_size"]
 
