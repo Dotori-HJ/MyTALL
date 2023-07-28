@@ -89,4 +89,4 @@ class DataContainer:
         return self.data.dim()
 
     def __iter__(self):
-        return self.data[0]
+        return iter(self.data[0])
