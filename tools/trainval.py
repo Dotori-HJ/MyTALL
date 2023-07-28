@@ -18,7 +18,7 @@ def parse_args():
     parser.add_argument(
         "--launcher", choices=["none", "pytorch"], default="none", help="job launcher"
     )
-    parser.add_argument("--local_rank", type=int, default=0)  # TODO
+    parser.add_argument("--local-rank", type=int, default=0)  # TODO
 
     args = parser.parse_args()
     return args
