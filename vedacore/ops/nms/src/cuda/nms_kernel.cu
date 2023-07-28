@@ -95,7 +95,7 @@ at::Tensor nms_cuda_forward(const at::Tensor segments, float nms_overlap_thresh)
   // at::Tensor mask_dev = at::empty({segments_num * col_blocks}, at::device(at::kCUDA).dtype(at::kLong));
 
   // mask_dev = (unsigned long long*) AT_CUDA_CHECK(at::cudaMalloc(state, segments_num * col_blocks * sizeof(unsigned long long)));
-  unsigned long long* mask_dev = (unsigned long long*) c10::cuda::CUDACachingAllocator::raw_allow(segments_num * col_blocks * sizeof(unsigned long long));
+  unsigned long long* mask_dev = (unsigned long long*) c10::cuda::CUDACachingAllocator::raw_alloc(segments_num * col_blocks * sizeof(unsigned long long));
 
   dim3 blocks(at::ceil_div(segments_num, threadsPerBlock),
               at::ceil_div(segments_num, threadsPerBlock));
@@ -148,8 +148,9 @@ at::Tensor nms_cuda_forward(const at::Tensor segments, float nms_overlap_thresh)
     }
   }
 
+  AT_CUDA_CHECK(c10::cuda::CUDACachingAllocator::raw_delete(mask_dev))
   // THCudaFree(state, mask_dev);
-  // at:AT_CUDA_CHECK(at::cudaFree(state, mask_dev));
+  // AT_CUDA_CHECK(at::cudaFree(state, mask_dev));
   // TODO improve this part
   return order_t.index({
       keep.narrow(/*dim=*/0, /*start=*/0, /*length=*/num_to_keep).to(
