@@ -148,7 +148,7 @@ at::Tensor nms_cuda_forward(const at::Tensor segments, float nms_overlap_thresh)
     }
   }
 
-  AT_CUDA_CHECK(c10::cuda::CUDACachingAllocator::raw_delete(mask_dev))
+  c10::cuda::CUDACachingAllocator::raw_delete(mask_dev);
   // THCudaFree(state, mask_dev);
   // AT_CUDA_CHECK(at::cudaFree(state, mask_dev));
   // TODO improve this part
