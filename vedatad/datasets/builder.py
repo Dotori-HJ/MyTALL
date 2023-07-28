@@ -118,9 +118,6 @@ def build_dataloader(dataset,
         pin_memory=False,
         worker_init_fn=init_fn,
         **kwargs)
-    data = next(iter(data_loader))
-    print(data)
-    exit()
 
     return data_loader
 

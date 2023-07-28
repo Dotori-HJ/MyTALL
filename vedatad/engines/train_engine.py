@@ -5,6 +5,7 @@ from time import time
 import numpy as np
 import torch
 from easydict import EasyDict
+from vedacore.parallel import DataContainer
 
 from vedacore.misc import registry
 from vedacore.optimizers import build_optimizer
@@ -66,6 +67,8 @@ class MemBankTrainEngine(BaseEngine):
     def forward_impl(
         self, imgs, video_metas, gt_segments, gt_labels, gt_segments_ignore=None
     ):
+        if isinstance(imgs, DataContainer):
+            imgs = imgs.data
         B, C, D, H, W = imgs.shape
         chunk_size = self.membank["chunk_size"]
 
