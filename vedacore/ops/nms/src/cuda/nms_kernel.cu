@@ -87,7 +87,7 @@ at::Tensor nms_cuda_forward(const at::Tensor segments, float nms_overlap_thresh)
 
   // THCState *state = at::globalContext().lazyInitCUDA(); // TODO replace with getTHCState
 
-  unsigned long long* mask_dev = NULL;
+  // unsigned long long* mask_dev = NULL;
   // THCudaCheck(THCudaMalloc(state, (void**) &mask_dev,
   //                      segments_num * col_blocks * sizeof(unsigned long long)));
 
@@ -95,7 +95,7 @@ at::Tensor nms_cuda_forward(const at::Tensor segments, float nms_overlap_thresh)
   // at::Tensor mask_dev = at::empty({segments_num * col_blocks}, at::device(at::kCUDA).dtype(at::kLong));
 
   // mask_dev = (unsigned long long*) AT_CUDA_CHECK(at::cudaMalloc(state, segments_num * col_blocks * sizeof(unsigned long long)));
-  mask_dev = (unsigned long long*) c10::cuda::CUDaCachingAllocator::allocate(segments_num * col_blocks * sizeof(unsigned long long));
+  unsigned long long* mask_dev = (unsigned long long*) c10::cuda::CUDACachingAllocator::raw_allow(segments_num * col_blocks * sizeof(unsigned long long));
 
   dim3 blocks(at::ceil_div(segments_num, threadsPerBlock),
               at::ceil_div(segments_num, threadsPerBlock));
