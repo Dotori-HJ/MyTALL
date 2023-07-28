@@ -90,3 +90,6 @@ class DataContainer:
 
     def __iter__(self):
         return iter(self.data[0])
+
+    def cuda(self):
+        self.data[0] = [data.cuda() for data in self.data[0]]

@@ -146,7 +146,8 @@ class MemBankTrainEngine(BaseEngine):
                 )
             t4 = time()
             # print(f"update memory bank cost {t4-t3}s")
-
+        gt_segments.cuda()
+        gt_labels.cuda()
         losses = self.criterion.loss(
             final_feats, video_metas, gt_segments, gt_labels, gt_segments_ignore
         )
