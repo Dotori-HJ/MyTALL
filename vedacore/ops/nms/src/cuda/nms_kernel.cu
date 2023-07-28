@@ -92,9 +92,9 @@ at::Tensor nms_cuda_forward(const at::Tensor segments, float nms_overlap_thresh)
   //                      segments_num * col_blocks * sizeof(unsigned long long)));
 
   // mask_dev = (unsigned long long*) THCudaMalloc(state, segments_num * col_blocks * sizeof(unsigned long long));
-  at::Tensor mask_dev = at::empty({segments_num * col_blocks}, at::device(at::kCUDA).dtype(at::kLong));
+  // at::Tensor mask_dev = at::empty({segments_num * col_blocks}, at::device(at::kCUDA).dtype(at::kLong));
 
-  // mask_dev = (unsigned long long*) at::AT_CUDA_CHECK(at::cudaMalloc(state, segments_num * col_blocks * sizeof(unsigned long long)));
+  mask_dev = (unsigned long long*) AT_CUDA_CHECK(at::cudaMalloc(state, segments_num * col_blocks * sizeof(unsigned long long)));
 
   dim3 blocks(at::ceil_div(segments_num, threadsPerBlock),
               at::ceil_div(segments_num, threadsPerBlock));
@@ -102,19 +102,19 @@ at::Tensor nms_cuda_forward(const at::Tensor segments, float nms_overlap_thresh)
               // THCCeilDiv(segments_num, threadsPerBlock));
   dim3 threads(threadsPerBlock);
 
-  unsigned long long* mask_dev_ptr = mask_dev.data_ptr<unsigned long long>();
+  // unsigned long long* mask_dev_ptr = mask_dev.data_ptr<unsigned long long>();
   nms_kernel<<<blocks, threads, 0, at::cuda::getCurrentCUDAStream()>>>(segments_num,
                                   nms_overlap_thresh,
                                   segments_dev,
-                                  mask_dev_ptr);
+                                  mask_dev);
 
   std::vector<unsigned long long> mask_host(segments_num * col_blocks);
 
-  const void* mask_dev_raw_ptr = static_cast<const void*>(mask_dev.data_ptr<unsigned long long>());
+  // const void* mask_dev_raw_ptr = static_cast<const void*>(mask_dev.data_ptr<unsigned long long>());
 
   AT_CUDA_CHECK(cudaMemcpyAsync(
 			  &mask_host[0],
-			  mask_dev_raw_ptr,
+			  mask_dev,
 			  sizeof(unsigned long long) * segments_num * col_blocks,
 			  cudaMemcpyDeviceToHost,
 			  at::cuda::getCurrentCUDAStream()
