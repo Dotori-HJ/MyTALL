@@ -87,7 +87,8 @@ class MemBankTrainEngine(BaseEngine):
         t1 = time()
         frozen_features = []
         feat_chunk_size = chunk_size // self.membank["feat_downsample"]
-        for video_meta in video_metas:
+        print(video_metas.data)
+        for video_meta in video_metas.data:
             video_name, tshift = video_meta["video_name"], video_meta["tshift"]
             video_name = os.path.basename(video_name)
             f_offset = tshift // self.membank["feat_downsample"]
