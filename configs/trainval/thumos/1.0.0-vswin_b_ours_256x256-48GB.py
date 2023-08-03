@@ -99,17 +99,17 @@ model = dict(
         use_checkpoint=False,
     ),
     neck=[
-        dict(
-            typename="SRMSwin",
-            srm_cfg=dict(
-                in_channels=1024,
-                out_channels=512,
-                with_transformer=False,
-            ),
-        ),
+        # dict(
+        #     typename="SRMSwin",
+        #     srm_cfg=dict(
+        #         in_channels=1024,
+        #         out_channels=512,
+        #         with_transformer=False,
+        #     ),
+        # ),
         dict(
             typename='TemporalWiseAttentionPooling',
-            input_dim=512,
+            input_dim=1024,
             base_dim=512,
         ),
         # dict(
