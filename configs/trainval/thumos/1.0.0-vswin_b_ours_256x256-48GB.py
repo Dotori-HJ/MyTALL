@@ -97,8 +97,14 @@ model = dict(
         patch_norm=True,
         frozen_stages=4,
         use_checkpoint=False,
+        do_pooling=False,
     ),
     neck=[
+        dict(
+            typename='TemporalWiseAttentionPooling',
+            input_dim=1024,
+            base_dim=512,
+        ),
         # dict(
         #     typename="SRMSwin",
         #     srm_cfg=dict(
@@ -107,11 +113,6 @@ model = dict(
         #         with_transformer=False,
         #     ),
         # ),
-        dict(
-            typename='TemporalWiseAttentionPooling',
-            input_dim=1024,
-            base_dim=512,
-        ),
         # dict(
         #     typename='SRM',
         #     srm_cfg=dict(
