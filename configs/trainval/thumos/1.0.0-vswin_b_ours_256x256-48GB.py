@@ -287,6 +287,6 @@ weights = dict(
 seed = 10
 dist_params = dict(backend="nccl")
 log_level = "INFO"
-find_unused_parameters = False
+find_unused_parameters = True
 
 # gpu_mem_fraction = 0.2
