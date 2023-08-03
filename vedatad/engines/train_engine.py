@@ -32,7 +32,15 @@ class TrainEngine(BaseEngine):
     def forward_impl(
         self, imgs, video_metas, gt_segments, gt_labels, gt_segments_ignore=None
     ):
+        if isinstance(imgs, DataContainer):
+            imgs = imgs.data[0]
+        imgs = imgs.cuda()
         feats = self.extract_feats(imgs)
+
+        if isinstance(video_metas, DataContainer):
+            video_metas = video_metas.data[0]
+        gt_segments.cuda()
+        gt_labels.cuda()
         losses = self.criterion.loss(
             feats, video_metas, gt_segments, gt_labels, gt_segments_ignore
         )
