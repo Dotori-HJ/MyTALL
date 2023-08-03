@@ -300,7 +300,6 @@ class TemporalWiseAttentionPooling(nn.Module):
         #         constant_init(m, 1)
 
     def forward(self, x):
-        print(x.size())
         b, c, t, h, w = x.size()
 
         if self.skip is not None:
