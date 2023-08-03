@@ -42,7 +42,7 @@ class ChunkVideoSwin(SwinTransformer3D):
 
         def forward_x(x):
             if isinstance(x, DataContainer):
-                imgs = imgs.data[0]
+                x = x.data[0]
             if x.dim() == 6:  # chunk first
                 return self.forward_chunk_inp_output(x)
             elif x.dim() == 5:  # batch-first
