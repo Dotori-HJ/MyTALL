@@ -13,7 +13,7 @@ overlap_ratio = 0.25
 keep_ratio = 1.0
 
 feat_downsample = 2
-expid = "1.0.0-vswin_b_256x256-48GB"
+expid = "1.0.0-vswin_b_ours_256x256-48GB"
 
 data = dict(
     samples_per_gpu=1,
